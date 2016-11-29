@@ -1,0 +1,22 @@
+.wrapper {
+  background-color: #F1F1F1;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content : center;
+}
+
+.container {
+  padding: 10px 10px;
+  display: flex;
+  align-items: center;
+  justify-content : center;
+}
+
+.content_center {
+  padding: 30px 30px;
+  width: 500px;
+  background-color: white;
+  border: 1px solid #999999;
+  border-radius: 5px;
+}
