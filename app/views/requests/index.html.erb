@@ -1,0 +1,23 @@
+
+<% @bookings.each do |booking| %>
+  <div class="product">
+    <div class='product-body'>
+      <h3><%= booking.bike.title %> </h3>
+      <p><%= booking.bike.detail%></p>
+      <p> <%= booking.start_date %></p>
+      </p><%= booking.end_date %></p>
+    </div>
+    <ul class="list-inline product-controls hidden-sm hidden-xs">
+    <div class="product-controls-accept">
+      <%= link_to accept_request_path(booking), method: :path do %>
+        <i class="fa fa-check" aria-hidden="true"> Acepter </i>
+      <% end %>
+    </div>
+    <div class="product-controls-refuse">
+      <%= link_to refuse_request_path(booking), method: :path  do %>
+        <i class="fa fa-times" aria-hidden="true"> Refuser </i>
+      <%end%>
+    </div>
+    </ul>
+  </div>
+<% end %>
