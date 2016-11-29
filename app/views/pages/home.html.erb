@@ -1,2 +1,48 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="banner">
+    <div class="banner-content">
+      <h1>Air Bikes n Bikes</h1>
+      <p> Rent Bikes Easily </p>
+      <div class="search">
+        <%= form_tag(bikes_path, method: :get) do %>
+          <%= label_tag(:city, "City:") %>
+          <%= text_field_tag(:city) %>
+          <%= label_tag(:kind, "Kind:") %>
+          <%= select_tag(:kind, options_for_select(['VTT', 'VTC']),include_blank: true) %>
+          <div>
+            <%= check_box_tag(:electric) %>
+            <%= label_tag(:electric, "Electric Bikes") %>
+          </div>
+          <div>
+            <%= submit_tag("Search") %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+
+<div class="wrapper-grey text-center">
+  <h1>Our best offers</h1>
+    <div class="container padded">
+      <div class="row">
+        <div class="col-xs-12 col-sm-4">
+          <div class="card" style="background-color: blue">
+            <a class="card-link" href="#" ></a>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+          <div class="card" style="background-color: blue">
+            <a class="card-link" href="#" ></a>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+          <div class="card" style="background-color: blue">
+            <a class="card-link" href="#" ></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+ </div>
+
+

@@ -1,0 +1,25 @@
+<h3>Résults for your request :</h3>
+  <div class="flexbox">
+    <div class="content_left flex-item">
+      <div class="row">
+      <% @bikes.each do |bike|%>
+        <div class="col-xs-12 col-sm-6">
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://lorempicsum.com/futurama/450/200/1');">
+            <div class="card-city"><%= bike.city %></div>
+            <div class="card-description">
+            <h2><%= bike.title %></h2>
+            <p><%= bike.detail %></p>
+            </div>
+            <img class="card-user avatar" src="user.jpg">
+            <a class="card-link" href="#" ></a>
+          </div>
+        </div>
+      <% end %>
+      </div>
+    </div>
+    <div class="content-right flex-item">
+
+    </div>
+  </div>
+
+
