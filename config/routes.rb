@@ -23,4 +23,6 @@ Rails.application.routes.draw do
   namespace :owner do
     resources :bikes
   end
+
+  # url: "owner/bikes" -> Présentents les bikes du owner
 end
