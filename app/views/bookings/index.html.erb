@@ -1,25 +1,24 @@
 <div class="container">
+  <div class= "row">
+    <div class= "col-md-6 col-md-offset-3">
+      <h1> Your waiting bike demands </h1>
+    </div>
+  </div>
   <% @bookings.each do |booking| %>
     <div class="product">
       <img src="http://lorempixel.com/80/80" class="product-image" alt="">
       <div class='product-body'>
         <h3><%= booking.bike.title %> </h3>
-        <p><%= booking.bike.detail[0...100]%></p>
-        <p> <%= booking.start_date %></p>
-        </p><%= booking.end_date %></p>
-        <p> <%= booking.status %> <p>
+        <p> <%= booking.bike.detail[0...100]%></p>
+        <ul class="list-inline product-controls hidden-sm hidden-xs">
+           <li> Début de location : <%= booking.start_date %></li>
+          </li> Fin de location : <%= booking.end_date %> </li>
+        </ul>
       </div>
       <ul class="list-inline product-controls hidden-sm hidden-xs">
-      <div class="product-controls-accept">
-        <%= link_to accept_request_path(booking), method: :path do %>
-          <i class="fa fa-check" aria-hidden="true"> Acepter </i>
+        <% if booking.status == "waiting" %>
+          <i class="fa fa-spinner" aria-hidden="true"> Votre demande est en attente </i>
         <% end %>
-      </div>
-      <div class="product-controls-refuse">
-        <%= link_to refuse_request_path(booking), method: :path  do %>
-          <i class="fa fa-times" aria-hidden="true"> Refuser </i>
-        <%end%>
-      </div>
       </ul>
     </div>
   <% end %>
