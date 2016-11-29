@@ -1,1 +1,10 @@
 @import "home";
+
+.flexbox {
+  display: flex;
+  justify-content: space-between;
+}
+
+.flex-item {
+  flex: 0 0 50%;
+}
