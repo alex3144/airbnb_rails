@@ -1,5 +1,6 @@
 class BikesController < ApplicationController
   # before_action :find_booking, only: [:index]
+  skip_before_action :authenticate_user!
 
   def index
     @bikes = Bike.where(:available == true)
