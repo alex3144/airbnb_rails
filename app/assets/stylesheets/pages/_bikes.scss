@@ -1,0 +1,12 @@
+.bikes-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.bikes-list, .bikes-map {
+  flex: 0 0 50%;
+}
+
+.bike-detail {
+  padding: 20px 0 40px 0;
+}
