@@ -1,13 +1,19 @@
-<h1>Résults for your request :</h1>
-<ul>
+<div class="container">
+<h2>Résults for your request :</h2>
+  <div class="row">
   <% @bikes.each do |bike|%>
-  <li>
-    <%= bike.kind %>
-  </li>
-  <li>
-    <%= bike.brand %>
-  </li>
+    <div class="col-xs-12 col-sm-4">
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://lorempicsum.com/futurama/350/200/1');">
+        <div class="card-city"><%= bike.city %></div>
+        <div class="card-description">
+        <h2><%= bike.title %></h2>
+        <p><%= bike.detail %></p>
+      </div>
+      <img class="card-user avatar" src="user.jpg">
+      <a class="card-link" href="#" ></a>
+    </div>
+  </div>
   <% end %>
-</ul>
-
+  </div>
+</div>
 
