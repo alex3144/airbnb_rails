@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="wrapper_for_form">
+
+    <h1>Bonjour, nous allons vous aider à décrire votre vélo</h1>
+
+
+    <div class="bike_form">
+      <%= simple_form_for([:owner,@bike]) do |f| %>
+        <p> Where is located your bike? </p>
+        <%= f.input :city%>
+
+        <p> Describe it </p>
+        <%= f.input :title, require: true, autofocus: true%>
+        <%= f.input :detail, label: "Decription",require: true, autofocus: true %>
+        <%= f.input :brand, autofocus: true %>
+        <%= f.input :kind, collection: ["Mountain Bike", "Race Bike", "City Style", "Tandem"],prompt: "Select your style", require: true, autofocus: true %>
+
+        <%= f.input :electric, as: :boolean, label: false, inline_label: true %>
+        <%= f.input :autonomy,autofocus: true %>
+        <p> What is your price per day to ride it ? </p>
+
+        <%= f.input :price,require: true, autofocus: true  %>
+
+        <p> Add Pictures</p>
+        <%= f.input :photo, as: :attachinary %>
+        <%= f.button :submit, "Rent my bike" %>
+      <% end %>
+    </div>
+
+
+  </div>
+</div>
+
+
+
+
+
