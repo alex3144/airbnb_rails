@@ -6,21 +6,21 @@ class BikesController < ApplicationController
 
     if params[:city] != ""
       @city_search = params[:city].downcase.capitalize
-      @bikes = Bike.where(city: @city_search)
+      @bikes = Bike.where(city: @city_search).order(created_at: :desc)
     else
       @bikes = Bike.all
     end
     if params[:electric] == "1"
       @electric_search = true
-      @bikes = @bikes.where(electric: @electric_search)
+      @bikes = @bikes.where(electric: @electric_search).order(created_at: :desc)
     else
       @bikes = @bikes.all
     end
     if params[:kind] != ""
       @kind_search = params[:kind]
-      @bikes = Bike.where(kind: @kind_search)
+      @bikes = Bike.where(kind: @kind_search).order(created_at: :desc)
     else
-      @bikes = @bikes.all
+      @bikes = @bikes.all.order(created_at: :desc)
     end
   end
 
