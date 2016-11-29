@@ -7,12 +7,21 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-Booking.destroy_all
-Bike.destroy_all
-User.destroy_all
+ Booking.destroy_all
+ Bike.destroy_all
+ User.destroy_all
+
+ owner = User.create!(first_name: "bob", email: "bob@bob.com", password: "123456", password_confirmation: "123456")
+ renter = User.create!(first_name: "alice", email: "alicce@alice.com", password: "123456", password_confirmation: "123456")
+ bike = Bike.create(brand:"peugeot", user: owner, title: "Mon super velo", detail: "
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo nemo corporis, quis sequi necessitatibus, laborum deleniti facilis id quae officiis. Dolorum et officia nemo a accusamus illum provident quaerat placeat!", )
+ booking =  Booking.new
+ booking.user = renter
+ booking.bike = bike
+ booking.save!
 
 user1 = User.create!(first_name:"Bob", email:"test@free.fr", password:"hzbdizhdb", password_confirmation:"hzbdizhdb")
-# user1.save
+
 
 bike1 = Bike.create!(city:"Nantes", brand:"Peugeot", title:"Vélo de collection", detail:"Lorem ipsum dolor sit amet, consectetur adipisicing elit.", user_id: 3)
 bike2 = Bike.create!(city:"Bordeaux", brand:"Scott", title:"VTT 29\" semi rigide", detail:"Lorem ipsum dolor sit amet, consectetur adipisicing elit.", user_id: 3)
