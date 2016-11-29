@@ -3,7 +3,9 @@ class BikesController < ApplicationController
   skip_before_action :authenticate_user!
 
   def index
-    @bikes = Bike.where(:available == true)
+    city = params[:city].downcase.capitalize
+    kind = params[:kind].downcase.capitalize
+    @bikes = Bike.where(city: city, kind: kind, available: true)
   end
 
   def show
