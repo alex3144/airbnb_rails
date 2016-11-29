@@ -4,22 +4,22 @@
   </div>
   <%= image_tag("http://lorempicsum.com/futurama/450/200/1") %>
 
-  <h2 class="bike-title"><%= @bike.title %></h2>
+  <h2 class="bike-title"><%= @bike.title %></h2><hr>
   <img class="card-user avatar" src="user.jpg">
   <div>
     <h3>A propos de ce vélo :</h3>
     <% if @bike.electric == true %>
-      <i class="fa fa-bicycle" aria-hidden="true"></i>
-      <i class="fa fa-plug" aria-hidden="true"></i>
+      <i id="show-bikes-logo" class="fa fa-bicycle" aria-hidden="true"></i>
+      <i id="show-bikes-logo" class="fa fa-plug" aria-hidden="true"></i>
     <% else %>
-      <i class="fa fa-bicycle" aria-hidden="true"></i>
+      <i id="show-bikes-logo" class="fa fa-bicycle" aria-hidden="true"></i>
     <% end %>
     <div class="bike-detail">
       <%= @bike.detail %>
     </div>
   </div>
-  <div>
-    <%= link_to "Book the bike", new_bike_booking_path(@bike), class: "btn btn-success" %>
+  <div><hr>
+    <%= link_to "Book the bike", new_bike_booking_path(@bike), class: "btn btn-success btn-large btn-show-bike" %>
   </div>
 </div>
 
