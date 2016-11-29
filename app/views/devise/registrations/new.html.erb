@@ -1,5 +1,5 @@
 <div class="wrapper">
-  <div class="container">
+  <div class="pad">
     <div class="content_center">
       <h2 class="text-center">Sign up</h2>
 
@@ -8,6 +8,8 @@
 
         <div class="form-inputs">
           <%= f.input :email, required: true, autofocus: true, placeholder: 'user@domain.com' %>
+          <%= f.input :first_name, autofocus: true, placeholder: 'Bob' %>
+          <%= f.input :last_name, autofocus: true, placeholder: 'Morane' %>
           <%= f.input :phone_number, autofocus: true, placeholder: 'example : 0650811810' %>
           <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
           <%= f.input :password_confirmation, required: true %>
