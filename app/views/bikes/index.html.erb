@@ -1,0 +1,13 @@
+<h1>Résults for your request :</h1>
+<ul>
+  <% @bikes.each do |bike|%>
+  <li>
+    <%= bike.kind %>
+  </li>
+  <li>
+    <%= bike.brand %>
+  </li>
+  <% end %>
+</ul>
+
+
