@@ -18,6 +18,9 @@ class BikesController < ApplicationController
 
   private
 
+  def bike_params
+    params.require(:product).permit(:name, :description, photos: [])
+  end
   # def find_booking
   #   @booking = Booking.find(params[:start_date, :end_date])
   # end

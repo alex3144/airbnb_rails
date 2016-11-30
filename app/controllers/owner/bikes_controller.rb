@@ -28,7 +28,7 @@ class Owner::BikesController < ApplicationController
   private
 
   def bike_params
-    params.require(:bike).permit(:title, :detail, :price, :city, :brand, :electric, :autonomy, :available, :photos )
+    params.require(:bike).permit(:title, :detail, :price, :city, :brand, :electric, :autonomy, :available, photos: [] )
   end
 
 
