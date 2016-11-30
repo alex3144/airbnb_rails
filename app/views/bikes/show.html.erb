@@ -19,9 +19,17 @@
       <%= @bike.detail %>
     </div>
   </div>
-  <div><hr>
-    <%= link_to "Book the bike", new_bike_booking_path(@bike), class: "btn btn-success btn-large btn-show-bike" %>
-  </div>
+
+  <% if @user.bikes %>
+    <div><hr>
+      <%= link_to "Edit your post", class: "btn btn-success btn-large btn-show-bike" %>
+      <%= link_to "Delete your post", class: "btn btn-danger btn-large btn-show-bike" %>
+    </div>
+  <% else %>
+    <div><hr>
+      <%= link_to "Book the bike", new_bike_booking_path(@bike), class: "btn btn-success btn-large btn-show-bike" %>
+    </div>
+  <% end %>
 </div>
 
 

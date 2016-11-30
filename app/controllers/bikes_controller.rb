@@ -3,6 +3,7 @@ class BikesController < ApplicationController
 
   def index
     @electric_search = false
+    @users = User.all
 
     if params[:city] != ""
       @city_search = params[:city].downcase.capitalize
@@ -26,6 +27,7 @@ class BikesController < ApplicationController
 
   def show
     @bike = Bike.find(params[:id])
+    @user = current_user
   end
 
   private
