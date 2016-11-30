@@ -5,11 +5,7 @@
     <%= label_tag(:kind, "Kind:") %>
     <%= select_tag(:kind, options_for_select(['', 'VTT', 'VTC'], @kind_search), class: "form-control bike-kind-form") %>
     <%= label_tag(:electric, "Electric Bikes") %>
-    <% if @electric_search %>
-      <%= check_box_tag(:electric, 1, true, class: "form-check-input") %>
-    <% else %>
-      <%= check_box_tag(:electric, 0, false, class: "form-check-input") %>
-    <% end %>
+    <%= check_box_tag(:electric, 1, @electric_search, class: "form-check-input") %>
     <%= submit_tag("Search", class: "btn btn-large btn-success btn-bike-form") %>
   <% end %>
 </div>
