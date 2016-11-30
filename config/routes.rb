@@ -24,8 +24,17 @@ Rails.application.routes.draw do
   end
 
   namespace :owner do
-    resources :bikes
+    resources :bikes do
+      member do
+        patch :available
+        patch :not_available
+      end
+    end
   end
 
+  resource :profile, only: [:show, :edit, :update]
   # url: "owner/bikes" -> Présentents les bikes du owner
+
+
+
 end

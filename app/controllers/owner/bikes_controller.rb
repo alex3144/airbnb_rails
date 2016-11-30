@@ -15,7 +15,7 @@ class Owner::BikesController < ApplicationController
     @bike= Bike.new(bike_params)
     @bike.user = current_user
     if @bike.save
-      redirect_to owner_bike_path(@bike)
+      redirect_to bike_path(@bike)
     else
       render "new"
     end
@@ -23,6 +23,18 @@ class Owner::BikesController < ApplicationController
 
   def show
 
+  end
+
+  def available
+    bike = current_user.bikes.find(params[:id])
+    bike.available = true
+    bike.save
+  end
+
+  def not_available
+    bike = current_user.bikes.find(params[:id])
+    bike.available = false
+    bike.save
   end
 
   private
