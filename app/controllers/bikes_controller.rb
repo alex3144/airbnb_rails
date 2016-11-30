@@ -1,15 +1,27 @@
 class BikesController < ApplicationController
-  # before_action :find_booking, only: [:index]
   skip_before_action :authenticate_user!
 
   def index
-    city_search = params[:city].downcase.capitalize
-    kind_search = params[:kind].downcase.capitalize
-    electric_search = false
-    if params[:electric] == 1
-      electric_search == true
+    @electric_search = false
+
+    if params[:city] != ""
+      @city_search = params[:city].downcase.capitalize
+      @bikes = Bike.where(city: @city_search).order(created_at: :desc)
+    else
+      @bikes = Bike.all
     end
-    @bikes = Bike.where(city: city_search, kind: kind_search, available: true, electric: electric_search)
+    if params[:electric] == "1"
+      @electric_search = true
+      @bikes = @bikes.where(electric: @electric_search).order(created_at: :desc)
+    else
+      @bikes = @bikes.all
+    end
+    if params[:kind] != ""
+      @kind_search = params[:kind]
+      @bikes = Bike.where(kind: @kind_search).order(created_at: :desc)
+    else
+      @bikes = @bikes.all.order(created_at: :desc)
+    end
   end
 
   def show
@@ -21,7 +33,4 @@ class BikesController < ApplicationController
   def bike_params
     params.require(:product).permit(:name, :description, photos: [])
   end
-  # def find_booking
-  #   @booking = Booking.find(params[:start_date, :end_date])
-  # end
 end

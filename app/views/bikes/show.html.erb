@@ -9,10 +9,11 @@
   <div>
     <h3>A propos de ce vélo :</h3>
     <% if @bike.electric == true %>
-      <i id="show-bikes-logo" class="fa fa-bicycle" aria-hidden="true"></i>
-      <i id="show-bikes-logo" class="fa fa-plug" aria-hidden="true"></i>
+      <i class="fa fa-bicycle show-bikes-logo bike-logo" aria-hidden="true"></i>
+      <i class="fa fa-plus show-bikes-logo plus-logo" aria-hidden="true"></i>
+      <i class="fa fa-plug show-bikes-logo plug-logo" aria-hidden="true"></i>
     <% else %>
-      <i id="show-bikes-logo" class="fa fa-bicycle" aria-hidden="true"></i>
+      <i class="fa fa-bicycle show-bikes-logo plug-logo" aria-hidden="true"></i>
     <% end %>
     <div class="bike-detail">
       <%= @bike.detail %>
