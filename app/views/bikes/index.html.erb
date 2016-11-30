@@ -30,8 +30,8 @@
             <% user = @users.find(bike.user_id) %>
             <% if user.photo %>
               <%= cl_image_tag user.photo.path %>
-              <%= link_to "", bike_path(bike), class: "card-link"%>
             <% end %>
+            <%= link_to "", bike_path(bike), class: "card-link"%>
           </div>
         </div>
       <% end %>

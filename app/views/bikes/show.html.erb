@@ -20,10 +20,9 @@
     </div>
   </div>
 
-  <% if @user.bikes %>
+  <% if user_signed_in? && @user.bookings %>
     <div><hr>
-      <%= link_to "Edit your post", class: "btn btn-success btn-large btn-show-bike" %>
-      <%= link_to "Delete your post", class: "btn btn-danger btn-large btn-show-bike" %>
+      <%= link_to "Cancel your booking", cancel_booking_path(@bike), class: "btn btn-danger btn-large" %>
     </div>
   <% else %>
     <div><hr>
