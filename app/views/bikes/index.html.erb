@@ -27,7 +27,10 @@
             <h2 class="bike-title"><%= bike.title %></h2>
             <p><%= bike.detail %></p>
             </div>
-            <img class="card-user avatar" src="user.jpg">
+            <% user = @users.find(bike.user_id) %>
+            <% if user.photo %>
+              <%= cl_image_tag user.photo.path %>
+            <% end %>
             <%= link_to "", bike_path(bike), class: "card-link"%>
           </div>
         </div>
