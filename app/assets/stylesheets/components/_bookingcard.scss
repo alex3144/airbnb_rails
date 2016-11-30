@@ -4,6 +4,8 @@
   padding: 20px;
   border-radius: 3px;
   transition: all 0.15s ease;
+  margin-top: 20px;
+  border-radius:5px;
 }
 
 /* Body design */
@@ -21,11 +23,13 @@
 .product-image {
   border-radius: 10px;
   margin-right: 20px;
-  flex: 0 0 20%;
+  flex: 0 0 10%;
 }
 
 /* Controls design */
 .product-controls {
+  font-weight: lighter;
+  color: #999999;
   display:flex;
   align-items: center;
   text-align: center;
@@ -47,7 +51,6 @@
 }
 .product-controls-hidden a {
   color: transparent;
-  font-size: 15px;
   transition: all 0.15s ease;
   border-color: transparent;
 }

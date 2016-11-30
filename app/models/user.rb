@@ -9,4 +9,5 @@ class User < ApplicationRecord
   #as owner
   has_many :requests , through: :bikes , source: :bookings
   has_many :bikes
+  has_attachment :photo, maximum:1
 end
