@@ -1,64 +1,33 @@
 <div class="banner">
-    <div class="banner-content">
-      <h1>Air Bikes n Bikes</h1>
-      <p> Rent Bikes Easily </p>
-        <div class="search form-group">
-          <%= form_tag(bikes_path, method: :get) do %>
-          <div class="form-line">
-            <%= label_tag(:city, "City:") %>
-            <%= text_field_tag(:city) %>
-          </div>
-          <div class="form-line">
-          <%= label_tag(:kind, "Kind:") %>
-          <%= select_tag(:kind, options_for_select(["Mountain Bike", "Race Bike", "City Style", "Tandem"]),include_blank: true, inline_label: true) %>
-          </div>
-          <div class="form-line">
-            <%= check_box_tag(:electric) %>
-            <%= label_tag(:electric, "Electric Bikes") %>
-          </div>
-          <div class="form-line">
-            <%= submit_tag("Search", class: "btn btn-large btn-success ") %>
-          </div>
-        <% end %>
+  <div class="banner-content">
+    <h1>Air Bikes n Bikes</h1>
+    <p> Louez un vélo simplement </p>
+    <div class="search">
+      <%= form_tag(bikes_path, method: :get) do %>
+        <%= label_tag(:city, "Villes:") %>
+        <%= text_field_tag(:city,) %>
+        <%= label_tag(:kind, "Type:") %>
+        <%= select_tag(:kind, options_for_select(["VTT", "VTC", "Hollandais","Course", "Cyclocross","Triporteur" , "Tandem"]),include_blank: true) %>
+        <%= label_tag(:electric, "Velo electrique") %>
+        <%= check_box_tag(:electric) %>
+      <div>
+        <%= submit_tag("Chercher", class: "btn btn-danger btn_search ") %>
       </div>
+      <% end %>
     </div>
   </div>
-
+</div>
 
 <div class="wrapper-grey text-center">
-  <h1>Our best offers</h1>
-
-  <div class="container padded">
-    <div class="row">
+  <div class="container">
+    <div><h1 >Nos dernières offres</h1></div>
+    <div class="row cardrow">
     <% @bikes.each do |bike|%>
       <div class="col-xs-12 col-sm-4">
         <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://lorempicsum.com/futurama/450/200/1');">
           <div class="card-city"><%= bike.city %></div>
           <div class="card-description">
             <h2 class="bike-title"><%= bike.title %></h2>
-            <p><%= bike.detail %></p>
-          </div>
-          <img class="card-user avatar" src="user.jpg">
-          <%= link_to "", bike_path(bike), class: "card-link"%>
-        </div>
-      </div>
-      <div class="col-xs-12 col-sm-4">
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://lorempicsum.com/futurama/450/200/1');">
-          <div class="card-city"><%= bike.city %></div>
-          <div class="card-description">
-            <h2 class="bike-title"><%= bike.title %></h2>
-            <p><%= bike.detail %></p>
-          </div>
-          <img class="card-user avatar" src="user.jpg">
-          <%= link_to "", bike_path(bike), class: "card-link"%>
-        </div>
-      </div>
-      <div class="col-xs-12 col-sm-4">
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://lorempicsum.com/futurama/450/200/1');">
-          <div class="card-city"><%= bike.city %></div>
-          <div class="card-description">
-            <h2 class="bike-title"><%= bike.title %></h2>
-            <p><%= bike.detail %></p>
           </div>
           <img class="card-user avatar" src="user.jpg">
           <%= link_to "", bike_path(bike), class: "card-link"%>
@@ -67,6 +36,6 @@
     <% end %>
     </div>
   </div>
- </div>
+</div>
 
 
