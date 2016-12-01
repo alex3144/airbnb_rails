@@ -2,31 +2,67 @@
 <div class="container">
   <div class= "row">
     <div class= "col-md-6 col-md-offset-3">
-      <h1> Mes proposition de locations </h1>
+      <h1> Mes offres </h1>
     </div>
   </div>
   <% @bookings.each do |booking| %>
     <div class="row">
       <div class="product ">
-        <img src="http://lorempixel.com/80/80" class="product-image" alt="">
         <div class='product-body'>
+
+        <div class="profile-locataire">
+         <% if current_user.photo? %>
+            <%= cl_image_tag current_user.photo.path , width: 80, height: 80, class: "product-image"  %>
+          <% else %>
+           <%= image_tag "http://placehold.it/80x80" , class: "product-image" %>
+          <% end %>
+          <h3><%= booking.user.first_name %> <%= booking.user.last_name %> </h3>
+        </div>
+
+
+    <!-- div correspondant au attribut du bike qui est demandé a la location-->
+        <div class="bike">
+        <img src="http://lorempixel.com/80/80" class="product-image" alt="">
           <h3><%= booking.bike.title %> </h3>
-          <p> <%= booking.bike.detail[0...100]%></p>
           <ul class="list-inline product-controls hidden-sm hidden-xs">
             <li> <strong> Début de location </strong> : <%= booking.start_date %></li>
             <li> <strong> Fin de location </strong> : <%= booking.end_date%> </li>
           </ul>
         </div>
-        <ul class="list-inline product-controls hidden-sm hidden-xs">
-        <div class="product-controls-accept">
-          <%= link_to accept_request_path(booking), method: :path do %>
-            <i class="fa fa-check" aria-hidden="true"> Acepter </i>
-          <% end %>
+
+    <!-- div correspondant au bouton accepter/refuser la demande de location -->
+
+      <div class="right">
+        <div class="choice">
+          <% if booking.status == "accepte" %>
+            <ul class="list-inline product-controls hidden-sm hidden-xs">
+            <div class="product-controls-accept">
+              <%= link_to accept_request_path(booking), method: :patch, remote: true do %>
+                <i class="fa fa-check" aria-hidden="true"> Accepter </i>
+              <% end %>
+            </div>
+          <div class="product-controls-refuse">
+            <%= link_to refuse_request_path(booking), method: :patch , remote: true do %>
+              <i class="fa fa-times" aria-hidden="true"> Refuser </i>
+            <%end%>
+          </div>
+          </ul>
         </div>
-        <div class="product-controls-refuse">
-          <%= link_to refuse_request_path(booking), method: :path  do %>
-            <i class="fa fa-times" aria-hidden="true"> Refuser </i>
+        <div class= "result">
+          <% elsif booking.status == "refuse" %>
+            <i class="fa fa-times" aria-hidden="true"></i>
+          <% elsif booking.status == "accepte" %>
+            <i class="fa fa-check" aria-hidden="true"></i>
           <%end%>
+        </div>
+        <div class= "accept hidden">
+          <i class="fa fa-check" aria-hidden="true"></i>
+        </div>
+        <div class= "refuse hidden">
+          <i class="fa fa-times" aria-hidden="true"></i>
+        </div>
+      </div>
+
         </div>
       </div>
     </div>

@@ -23,10 +23,18 @@ class BikesController < ApplicationController
   def show
     @user = current_user
     @bike = Bike.find(params[:id])
-    @check = bookingcheck(@user)
+    @check = bookingcheck
   end
 
   private
+
+  def bookingcheck
+    if current_user.bookings.where(bike_id: @bike.id).empty?
+      return true
+    else
+      return false
+    end
+  end
 
   def bike_params
     params.require(:product).permit(:name, :description, photos: [])
