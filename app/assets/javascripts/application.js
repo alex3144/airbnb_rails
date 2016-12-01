@@ -16,8 +16,3 @@ $("#location_good").click(function() {
   }
 );
 
-
-$('.datepicker').datepicker({
-    format: 'dd/mm/yyyy',
-    startDate: '-3d'
-});
