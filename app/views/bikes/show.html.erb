@@ -13,7 +13,11 @@
 
 <div class="container text-center">
 
-  <div class="show-bike-avatar"><%= cl_image_tag @bike.user.photo.path %></div>
+  <div class="show-bike-avatar">
+  <% if @bike.user.photo? %>
+  <%= cl_image_tag @bike.user.photo.path %>
+  <% end %>
+  </div>
   <div>
     <h3>A propos de ce vélo :</h3>
     <% if @bike.electric == true %>
