@@ -28,6 +28,17 @@ class BikesController < ApplicationController
 
   private
 
+
+  def bookingcheck(user)
+    if user_signed_in?
+      if user.bookings.where(bike_id: @bike.id).empty?
+        return true
+      else
+        return false
+      end
+    end
+  end
+
   def bike_params
     params.require(:product).permit(:name, :description, photos: [])
   end
