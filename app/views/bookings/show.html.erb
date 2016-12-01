@@ -1,0 +1,35 @@
+<div class="container text-center">
+  <div class= "bike-img">
+
+  </div>
+  <%= image_tag("http://lorempicsum.com/futurama/450/200/1") %>
+
+  <h2 class="bike-title"><%= @bike.title %></h2><hr>
+  <img class="card-user avatar" src="user.jpg">
+  <div>
+    <h3>A propos de ce vélo :</h3>
+    <% if @bike.electric == true %>
+      <i class="fa fa-bicycle show-bikes-logo bike-logo" aria-hidden="true"></i>
+      <i class="fa fa-plus show-bikes-logo plus-logo" aria-hidden="true"></i>
+      <i class="fa fa-plug show-bikes-logo plug-logo" aria-hidden="true"></i>
+    <% else %>
+      <i class="fa fa-bicycle show-bikes-logo" aria-hidden="true"></i>
+    <% end %>
+    <div class="bike-detail">
+      <%= @bike.detail %>
+    </div>
+  </div>
+
+
+  <hr>
+  <%= link_to "Retour", bookings_path, class: "btn btn-success btn-large " %>
+  <% if @booking.status == "waiting" %>
+    <%= link_to "Cancel your booking", cancel_booking_path(@booking), method: :delete, class: "btn btn-danger btn-large" %>
+  <% elsif @booking.status == "accepte" %>
+    <strong> <p> Contacter  <%= @bike.user.first_name %> au : <%= @bike.user.phone_number %> <p> </strong>
+  <% else %>
+    <p> Votre demande n'a pas été acceptée </p>
+  <% end %>
+
+
+

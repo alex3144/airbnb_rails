@@ -1,10 +1,11 @@
 <div class="container">
   <div class= "row">
     <div class= "col-md-6 col-md-offset-3">
-      <h1> My Rental </h1>
+      <h1> Demandes de location </h1>
     </div>
   </div>
   <% @bookings.each do |booking| %>
+  <%= link_to booking_path(booking), class: "link-inactif" do %>
     <div class="product">
       <img src="http://lorempixel.com/80/80" class="product-image" alt="">
       <div class='product-body'>
@@ -21,5 +22,6 @@
         <% end %>
       </ul>
     </div>
+  <% end %>
   <% end %>
 </div>

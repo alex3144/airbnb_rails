@@ -20,15 +20,19 @@
     </div>
   </div>
 
-  <% if user_signed_in? && @user.bookings %>
-    <div><hr>
-      <%= link_to "Cancel your booking", cancel_booking_path(@bike), class: "btn btn-danger btn-large" %>
-    </div>
-  <% else %>
+  <% if user_signed_in? && @check == true && @bike.user != @user  %>
     <div><hr>
       <%= link_to "Book the bike", new_bike_booking_path(@bike), class: "btn btn-success btn-large btn-show-bike" %>
     </div>
+    <% elsif user_signed_in? && @check == false %>
+      <div><hr>
+        <%= link_to "Vous avez déjà booké ce velo", bookings_path, class: "btn btn-success btn-large btn-show-bike" %>
+      </div>
+    <% elsif user_signed_in? == false %>
+      <div><hr>
+        <%= link_to "Connectez vous pour booker votre premier vélo ", new_user_session_path,class: "btn btn-success btn-large btn-show-bike" %>
+      </div>
+    <% else %>
+     <p> <strong> Nous faisons le maximum pour louer votre vélo  </strong> </p>
+     <%= link_to "Retour", bookings_path, class: "btn btn-success btn-large " %>
   <% end %>
-</div>
-
-

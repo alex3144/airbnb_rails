@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <h1 class="text-center"> Mon profil   <%= link_to "edit your profile", edit_profile_path, class: "btn btn-info"%> </h1>
+    <h1 class="text-center"> Mon profil <%= link_to "edit your profile", edit_profile_path, class: "btn btn-info"%> </h1>
     <div class="col-md-6 col-md-offset-4 padded">
     <% if @user.photo? %>
       <%= cl_image_tag @user.photo.path, width: 300, height: 300, crop: :fill, class: "img-circle" %>
@@ -17,7 +17,7 @@
 
   <div class="row">
     <div class="col-md-6 col-md-offset-5">
-      <h1> Mes velo </h1>
+      <h1> Gerer mes vélos </h1>
     </div>
       <% @bikes.each do |bike|%>
         <div class="col-xs-12 col-sm-6">
