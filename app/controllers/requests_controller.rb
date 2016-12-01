@@ -7,14 +7,25 @@ class RequestsController < ApplicationController
   end
 
   def accept
-    booking = curent_user.requests.find(params[:id])
-    booking.accept_status
-    booking.save
+    @booking = current_user.requests.find(params[:id])
+    @booking.accept_status
+    if @booking.save
+      respond_to do |format|
+        format.html { redirect_to bookings_path }
+        format.js
+      end
+    end
   end
 
   def refuse
-    booking = curent_user.requests.find(params[:id])
-    booking.refuse_status
-    booking.save
+    @booking = current_user.requests.find(params[:id])
+    @booking.refuse_status
+    @booking.save
+     if @booking.save
+      respond_to do |format|
+        format.html { redirect_to bookings_path }
+        format.js
+      end
+    end
   end
 end

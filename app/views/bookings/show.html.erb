@@ -24,7 +24,7 @@
   <hr>
   <%= link_to "Retour", bookings_path, class: "btn btn-success btn-large " %>
   <% if @booking.status == "waiting" %>
-    <%= link_to "Cancel your booking", cancel_booking_path(@booking), method: :delete, class: "btn btn-danger btn-large" %>
+    <%= link_to "Annuler votre demande", cancel_booking_path(@booking), method: :delete, class: "btn btn-danger btn-large" %>
   <% elsif @booking.status == "accepte" %>
     <strong> <p> Contacter  <%= @bike.user.first_name %> au : <%= @bike.user.phone_number %> <p> </strong>
   <% else %>

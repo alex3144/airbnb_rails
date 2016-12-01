@@ -1,48 +1,20 @@
 <div class="container">
   <div class="row">
-    <h1 class="text-center"> Mon profil <%= link_to "edit your profile", edit_profile_path, class: "btn btn-info"%> </h1>
-    <div class="col-md-6 col-md-offset-4 padded">
+    <h2 class="text-center"> <strong><%= @user.first_name %></strong> <strong><%= @user.last_name %></strong> <%= link_to "edit your profile", edit_profile_path, class: "btn btn-info"%> </h2>
+    <div class="col-md-6 col-md-offset-5 padded">
     <% if @user.photo? %>
-      <%= cl_image_tag @user.photo.path, width: 300, height: 300, crop: :fill, class: "img-circle" %>
+      <%= cl_image_tag @user.photo.path, width: 200, height: 200, crop: :fill, class: "img-circle" %>
     <% end %>
     </div>
   </div>
   <div class="row">
-      <div class="col-md-8 col-md-offset-4 ">
-        <h3><strong><%= @user.first_name %></strong> <strong><%= @user.last_name %></strong></h3>
+      <div class="col-md-8 col-md-offset-5 ">
+        <h3><strong> téléphone : <%= @user.phone_number %> </strong> </h3>
+         <h3><strong> email : <%= @user.email %> </strong> </h3>
       </div>
     </div>
     <hr>
   </div>
 
-  <div class="row">
-    <div class="col-md-6 col-md-offset-5">
-      <h1> Gerer mes vélos </h1>
-    </div>
-      <% @bikes.each do |bike|%>
-        <div class="col-xs-12 col-sm-6">
-          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://lorempicsum.com/futurama/450/200/1');">
-            <div class="card-city"><%= bike.city %></div>
-            <div class="card-description">
-            <h2 class="bike-title"><%= bike.title %></h2>
-            <p><%= bike.detail %></p>
-            </div>
-            </div>
-          <ul class="list-inline product-controls hidden-sm hidden-xs">
-            <div class="product-controls-accept">
-              <%= link_to available_owner_bike_path(bike), method: :patch, id: "location_good" do %>
-                <i class="fa fa-check" aria-hidden="true"> Mettre en location </i>
-              <% end %>
-            </div>
-            <div class="product-controls-refuse">
-              <%= link_to not_available_owner_bike_path(bike), method: :patch, id: "location_false" do %>
-            <i class="fa fa-times" aria-hidden="true"> Enlever de la location </i>
-            <%end%>
-            </div>
-          </ul>
-        </div>
-      <% end %>
-      </div>
-</div>
 
 

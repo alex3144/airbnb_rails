@@ -6,6 +6,8 @@
 //= require attachinary
 //= require_tree
 
+// Gestion de mes offres alert
+
 $("#location_false").click(function() {
   alert("Vous avez enlevé votre velo de la location");
   }
@@ -17,7 +19,10 @@ $("#location_good").click(function() {
 );
 
 
+// Gestion du status de mes offres
+
 $('.datepicker').datepicker({
     format: 'dd/mm/yyyy',
     startDate: '-3d'
 });
+

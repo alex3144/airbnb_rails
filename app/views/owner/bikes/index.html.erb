@@ -1,23 +1,29 @@
-<h3>Your Bikes:</h3>
-  <div class="flexbox">
-    <div class="content_left flex-item">
-      <div class="row">
+<div class="row">
+    <div class="col-md-6 col-md-offset-5">
+      <h1> Gerer mes offres </h1>
+    </div>
       <% @bikes.each do |bike|%>
         <div class="col-xs-12 col-sm-6">
           <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://lorempicsum.com/futurama/450/200/1');">
             <div class="card-city"><%= bike.city %></div>
             <div class="card-description">
-            <h2><%= bike.title %></h2>
+            <h2 class="bike-title"><%= bike.title %></h2>
             <p><%= bike.detail %></p>
             </div>
-            <img class="card-user avatar" src="user.jpg">
-            <a class="card-link" href="#" ></a>
-          </div>
+            </div>
+          <ul class="list-inline product-controls hidden-sm hidden-xs">
+            <div class="product-controls-accept">
+              <%= link_to available_owner_bike_path(bike), method: :patch, id: "location_good" do %>
+                <i class="fa fa-check" aria-hidden="true"> Mettre en location </i>
+              <% end %>
+            </div>
+            <div class="product-controls-refuse">
+              <%= link_to not_available_owner_bike_path(bike), method: :patch, id: "location_false" do %>
+            <i class="fa fa-times" aria-hidden="true"> Enlever de la location </i>
+            <%end%>
+            </div>
+          </ul>
         </div>
       <% end %>
       </div>
-    </div>
-    <div class="content-right flex-item">
-
-    </div>
-  </div>
+</div>
