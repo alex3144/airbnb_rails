@@ -21,5 +21,8 @@ $("#location_good").click(function() {
 
 // Gestion du status de mes offres
 
-
+$('.datepicker').datepicker({
+    format: 'dd/mm/yyyy',
+    startDate: '-3d'
+});
 

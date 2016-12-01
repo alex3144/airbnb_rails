@@ -28,6 +28,10 @@ class BikesController < ApplicationController
 
   private
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
   def bookingcheck(user)
     if user_signed_in?
       if user.bookings.where(bike_id: @bike.id).empty?

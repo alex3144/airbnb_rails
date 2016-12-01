@@ -1,11 +1,19 @@
+<% if @bike.photos? == true %>
+  <div class= "wrapper-bike-img" style="background-image:linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url(<%= cl_image_path @bike.photos.first.path %>);">
+  <h2 class="text-center"><%= @bike.title %></h2>
+</div>
+<% else %>
+<div class= "wrapper-bike-img" style="background-color:#ccc;">
+  <h2 class="text-center"><%= @bike.title %></h2>
+</div>
+<% end %>
+
+
+<hr>
+
 <div class="container text-center">
-  <div class= "bike-img">
 
-  </div>
-  <%= image_tag("http://lorempicsum.com/futurama/450/200/1") %>
-
-  <h2 class="bike-title"><%= @bike.title %></h2><hr>
-  <img class="card-user avatar" src="user.jpg">
+  <div class="show-bike-avatar"><%= cl_image_tag @bike.user.photo.path %></div>
   <div>
     <h3>A propos de ce vélo :</h3>
     <% if @bike.electric == true %>

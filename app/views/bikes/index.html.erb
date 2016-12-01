@@ -1,43 +1,46 @@
-<div class="form-bike-index form-group">
+<div class="form-bike-index form-group text-center">
   <%= form_tag(bikes_path, method: :get, :class => 'form-inline') do %>
-    <%= label_tag(:city, "City:") %>
+    <%= label_tag(:city, "Ville:", class: 'label-bike-tag') %>
     <%= text_field_tag(:city, @city_search, class: 'form-control bike-city-form') %>
-    <%= label_tag(:kind, "Kind:") %>
-    <%= select_tag(:kind, options_for_select(['', 'VTT', 'VTC'], @kind_search), class: "form-control bike-kind-form") %>
-    <%= label_tag(:electric, "Electric Bikes") %>
+    <%= label_tag(:kind, "Type:", class: 'label-bike-tag') %>
+    <%= select_tag(:kind, options_for_select(['', 'VTT', 'VTC', 'Hollandais', 'Course', 'Cyclocross', 'Triporteur', 'Tandem'], @kind_search), class: "form-control bike-kind-form") %>
+    <%= label_tag(:electric, "Vélos électriques", class: 'label-bike-tag') %>
     <%= check_box_tag(:electric, 1, @electric_search, class: "form-check-input") %>
-    <%= submit_tag("Search", class: "btn btn-large btn-success btn-bike-form") %>
+    <%= submit_tag("Recherche", class: "btn btn-large btn-danger btn-bike-form") %>
   <% end %>
 </div>
 
 <hr>
 
-<h3>Résults for your request :</h3>
-
+<h3 class="bike-index-title">Listes des vélos en lien à votre recherche :</h3>
+<div class="wrapper-index-bikes">
   <div class="bikes-container">
     <div class="content_left bikes-list">
       <div class="row">
         <% @bikes.each do |bike|%>
           <% if bike.available == true %>
             <div class="col-xs-12 col-md-6">
-              <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://lorempicsum.com/futurama/450/200/1');">
+              <% if bike.photos? %>
+                  <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path bike.photos.first.path %>);">
+                <% else %>
+                  <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url("");">
+                <% end %>
                 <div class="card-city"><%= bike.city %></div>
                 <% if bike.user.photo %>
-                  <%= cl_image_tag bike.user.photo.path, width: 50, height: 50, crop: :fill, class: "img-circle" %>
+                  <%= cl_image_tag bike.user.photo.path, crop: :fill, class: "card-avatar" %>
                 <% end %>
                 <div class="card-description">
-                <h2 class="bike-title"><%= bike.title %></h2>
-                <p><%= bike.detail %></p>
+                <h2 class="bike-title text-center"><%= bike.title %></h2>
                 </div>
                 <%= link_to "", bike_path(bike), class: "card-link"%>
+                </div>
               </div>
-            </div>
-          <%end%>
-        <% end %>
+            <%end%>
+          <% end %>
+        </div>
       </div>
+    <div class="content-right bikes-map">
     </div>
-  <div class="content-right bikes-map">
   </div>
 </div>
-
 
