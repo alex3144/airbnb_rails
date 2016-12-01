@@ -1,9 +1,14 @@
 .show-bikes-logo {
   font-size: 35px;
-  color: grey;
+  color: $dark-grey;
   padding: 8px 15px 0 0;
 }
 
-.plug-logo, .plus-logo {
-  font-size: 30px;
+.plug-logo{
+  font-size: 28px;
+}
+
+.plus-logo{
+  font-size: 16px;
+  color: $light-grey;
 }

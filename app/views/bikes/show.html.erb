@@ -1,50 +1,72 @@
 <% if @bike.photos? == true %>
-  <div class= "wrapper-bike-img" style="background-image:linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url(<%= cl_image_path @bike.photos.first.path %>);">
-  <h2 class="text-center"><%= @bike.title %></h2>
-</div>
+  <div class= "wrapper-bike-img" style="background-image:linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url(<%= cl_image_path @bike.photos.first.path %>);"></div>
 <% else %>
-<div class= "wrapper-bike-img" style="background-color:#ccc;">
-  <h2 class="text-center"><%= @bike.title %></h2>
-</div>
+  <div class= "wrapper-bike-img" style="background-color:#ccc;">
+  </div>
 <% end %>
 
+<div class="container container-show-bike-head text-center">
+  <div class="row">
+    <div class="col-md-offset-2 col-md-8 col-md-offset-2">
+      <h2 class="text-center"><%= @bike.title %></h2>
+      <div class="show-bike-city">
+        <%= @bike.city %>
+      </div>
+      <div class="show-bike-avatar">
+      <% if @bike.user.photo? %>
+        <%= cl_image_tag @bike.user.photo.path %>
+      <% end %>
+      </div>
 
-<hr>
-
-<div class="container text-center">
-
-  <div class="show-bike-avatar">
-  <% if @bike.user.photo? %>
-  <%= cl_image_tag @bike.user.photo.path %>
-  <% end %>
+      <div class="show-bike-username">
+        <%= @bike.user.first_name %>
+        <%= @bike.user.last_name %>
+      </div>
+    </div>
   </div>
-  <div>
-    <h3>A propos de ce vélo :</h3>
-    <% if @bike.electric == true %>
-      <i class="fa fa-bicycle show-bikes-logo bike-logo" aria-hidden="true"></i>
-      <i class="fa fa-plus show-bikes-logo plus-logo" aria-hidden="true"></i>
-      <i class="fa fa-plug show-bikes-logo plug-logo" aria-hidden="true"></i>
-    <% else %>
-      <i class="fa fa-bicycle show-bikes-logo" aria-hidden="true"></i>
-    <% end %>
-    <div class="bike-detail">
-      <%= @bike.detail %>
+</div>
+<div class="container container-show-bike-content text-center">
+  <div class="row">
+    <div class="col-md-offset-2 col-md-8 col-md-offset-2">
+      <hr>
+      <div class="show-bike-logos">
+        <% if @bike.electric == true %>
+          <i class="fa fa-bicycle show-bikes-logo bike-logo" aria-hidden="true"></i>
+          <i class="fa fa-plus show-bikes-logo plus-logo" aria-hidden="true"></i>
+          <i class="fa fa-plug show-bikes-logo plug-logo" aria-hidden="true"></i>
+        <% else %>
+          <i class="fa fa-bicycle show-bikes-logo" aria-hidden="true"></i>
+        <% end %>
+        <hr>
+      </div>
     </div>
   </div>
 
-  <% if user_signed_in? && @check == true && @bike.user != @user  %>
-    <div><hr>
-      <%= link_to "Book the bike", new_bike_booking_path(@bike), class: "btn btn-success btn-large btn-show-bike" %>
-    </div>
-    <% elsif user_signed_in? && @check == false %>
-      <div><hr>
-        <%= link_to "Vous avez déjà booké ce velo", bookings_path, class: "btn btn-success btn-large btn-show-bike" %>
-      </div>
-    <% elsif user_signed_in? == false %>
-      <div><hr>
-        <%= link_to "Connectez vous pour booker votre premier vélo ", new_user_session_path,class: "btn btn-success btn-large btn-show-bike" %>
-      </div>
-    <% else %>
-     <p> <strong> Nous faisons le maximum pour louer votre vélo  </strong> </p>
-     <%= link_to "Retour", bookings_path, class: "btn btn-success btn-large " %>
-  <% end %>
+  <div class="row">
+      <div class="col-md-offset-3 col-md-6 col-md-offset-3">
+        <div class="show-bike-detail text-center">
+          <h3>A propos de ce vélo :</h3>
+          <%= @bike.detail %>
+        </div>
+
+        <% if user_signed_in? && @check == true && @bike.user != @user  %>
+          <div>
+            <%= link_to "Demande de réservation", new_bike_booking_path(@bike), class: "btn btn-danger btn-large btn-bike-show-pink" %>
+          </div>
+          <% elsif user_signed_in? && @check == false %>
+            <div>
+              <%= link_to "Vélo déjà réservé", bookings_path, class: "btn btn-success btn-large btn-bike-show-green" %>
+            </div>
+          <% elsif user_signed_in? == false %>
+            <div>
+              <%= link_to "Demande de réservation", new_user_session_path,class: "btn btn-danger btn-large btn-bike-show-pink" %>
+            </div>
+          <% else %>
+          <div class="show-bike-text">
+            <p> <strong> Votre offre de location a bien été prise en compte par nos services.</strong> </p>
+            <%= link_to "Retour", bookings_path, class: "btn btn-success btn-large btn-bike-show-green" %>
+          </div>
+        <% end %>
+   </div>
+  </div>
+</div>
