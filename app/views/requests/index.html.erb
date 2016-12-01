@@ -8,15 +8,14 @@
 </div>
   <% @bookings.each do |booking| %>
     <div class="row">
-<<<<<<< HEAD
       <div class="flex-container">
     <!-- div correspondant au profil-->
         <div class="profile-locataire flex-item">
           <div class="flex-item2">
-             <% if current_user.photo? %>
-                <%= cl_image_tag current_user.photo.path , width: 80, height: 80, class: "img-circle"  %>
+             <% if booking.user.photo? %>
+                <%= cl_image_tag booking.user.photo.path , width: 80, height: 80, class: "img-circle"  %>
               <% else %>
-               <%= image_tag "http://placehold.it/80x80" , class: "product-image" %>
+               <%= image_tag "http://placehold.it/80x80" , class: "img-circle" %>
               <% end %>
           </div>
           <div class="flex-item2">
@@ -42,20 +41,7 @@
              </div>
              <%= link_to "", bike_path(booking.bike), class: "card-link"%>
              </div>
-=======
-
-      <div class="product ">
-        <img src="http://lorempixel.com/80/80" class="product-image" alt="">
-        <div class='product-body'>
-          <h3><%= booking.bike.title %> </h3>
-          <p> <%= booking.bike.detail[0...100]%></p>
-          <ul class="list-inline product-controls hidden-sm hidden-xs">
-            <li> <strong> Début de location </strong> : <%= booking.start_date %></li>
-            <li> <strong> Fin de location </strong> : <%= booking.end_date%> </li>
-          </ul>
->>>>>>> master
-        </div>
-
+          </div>
 
     <!-- div correspondant au bouton accepter/refuser la demande de location -->
 
@@ -82,86 +68,10 @@
             <i class="fa fa-check fa-2x" aria-hidden="true"></i>
           <%end%>
         </div>
-<<<<<<< HEAD
-=======
-
-      <div class="flex-container">
-    <!-- div correspondant au profil-->
-        <div class="profile-locataire flex-item">
-          <div class="flex-item2">
-             <% if current_user.photo? %>
-                <%= cl_image_tag current_user.photo.path , width: 80, height: 80, class: "img-circle"  %>
-              <% else %>
-               <%= image_tag "http://placehold.it/80x80" , class: "product-image" %>
-              <% end %>
-          </div>
-          <div class="flex-item2">
-            <p> <i class="fa fa-user-circle-o" aria-hidden="true"> <%= booking.user.first_name %> <%= booking.user.last_name %></i> </p>
-            <p> <i class="fa fa-phone" aria-hidden="true"> <%= booking.user.phone_number %> </i> </p>
-            <div class="date-card">
-              <li style="list-style: none">  Du  : <strong><%= booking.start_date %></strong></li>
-              <li style="list-style: none">  Au:  : <strong> <%= booking.end_date%> </strong></li>
-            </div>
-          </div>
-        </div>
-
-    <!-- div correspondant au attribut du bike qui est demandé a la location-->
-        <div class="bike-photo flex-item ">
-            <% if booking.bike.photos? %>
-              <div class="card2" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path booking.bike.photos.first.path %>);">
-            <% else %>
-               <div class="card2" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url("");">
-            <% end %>
-             <div class="card-city"><%= booking.bike.city %></div>
-             <div class="card-description">
-             <h2 class="bike-title text-center"><%= booking.bike.title %></h2>
-             </div>
-             <%= link_to "", bike_path(booking.bike), class: "card-link"%>
-             </div>
-        </div>
-
-
-    <!-- div correspondant au bouton accepter/refuser la demande de location -->
-
-      <div class="right flex-item">
-        <div class="choice">
-          <% if booking.status == "waiting" %>
-            <ul class="list-inline product-controls hidden-sm hidden-xs">
-            <div class="product-controls-accept">
-              <%= link_to accept_request_path(booking), method: :patch, id: "accept" ,remote: true do %>
-                <i class="fa fa-check fa-2x" aria-hidden="true"></i>
-              <% end %>
-            </div>
-          <div class="product-controls-refuse">
-            <%= link_to refuse_request_path(booking), method: :patch , id: "refuse", remote: true do %>
-              <i class="fa fa-times fa-2x" aria-hidden="true"></i>
-            <%end%>
-          </div>
-          </ul>
-        </div>
-        <div class= "result">
-          <% elsif booking.status == "refuse" %>
-            <i class="fa fa-times fa-2x" aria-hidden="true"></i>
-          <% elsif booking.status == "accepte" %>
-            <i class="fa fa-check fa-2x" aria-hidden="true"></i>
-          <%end%>
-        </div>
->>>>>>> master
-        <div class= "accept hidden">
-          <i class="fa fa-check   fa-2x" aria-hidden="true"></i>
-        </div>
-        <div class= "refuse hidden">
-          <i class="fa fa-times  fa-2x" aria-hidden="true"></i>
-        </div>
-      </div>
-
-        </div>
-<<<<<<< HEAD
-=======
->>>>>>> 441aa62... work in progress
->>>>>>> master
-      </div>
-      </div>
     </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
+
+
+
