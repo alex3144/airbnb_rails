@@ -1,3 +1,35 @@
 .hidden {
   display:none;
 }
+
+.flex-container {
+  display:flex;
+  justify-content:space-between;
+  align-items: center;
+  background-color: #edeff0;
+}
+
+.flex-item {
+  padding:30px;
+  margin-left: 80px;
+  margin-right: 80px;
+
+}
+
+.flex-item2 {
+  padding:20px;
+}
+
+.profile-locataire {
+  border: 1px solid rgb(230,230,230);
+  background-color:white;
+  font-size: 18px;
+  font-family: 'Open Sans';
+  display:flex;
+  align-items: center;
+  height: 175px;
+}
+
+.profile-locataire img {
+  padding:5px;
+}

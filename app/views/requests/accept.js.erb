@@ -1,5 +1,10 @@
-$(".choice").click(function(){
-  $(this).remove();
-  $(".result").load()
 
+$("#accept").click(function() {
+$(".choice").remove();
+$(".accept").removeClass("hidden");
+});
+
+$("#refuse").click(function() {
+$(".choice").remove();
+$(".refuse").removeClass("hidden");
 });

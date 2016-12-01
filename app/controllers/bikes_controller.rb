@@ -23,16 +23,18 @@ class BikesController < ApplicationController
   def show
     @user = current_user
     @bike = Bike.find(params[:id])
-    @check = bookingcheck
+    @check = bookingcheck(@user)
   end
 
   private
 
-  def bookingcheck
-    if current_user.bookings.where(bike_id: @bike.id).empty?
-      return true
-    else
-      return false
+  def bookingcheck(user)
+    if user_signed_in?
+      if user.bookings.where(bike_id: @bike.id).empty?
+        return true
+      else
+        return false
+      end
     end
   end
 

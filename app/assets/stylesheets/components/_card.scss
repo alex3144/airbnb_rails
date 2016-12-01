@@ -6,6 +6,17 @@
   position: relative;
   margin: 20px;
 }
+
+.card2 {
+  height: 175px;
+  min-width: 300px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  background-size: cover !important;
+  color: white;
+  position: relative;
+  margin: 20px;
+}
+
 .card-user {
   position: absolute;
   right: 10px;
@@ -41,4 +52,9 @@
 }
 .card-link:hover{
   opacity: 0.1;
+}
+
+
+.date-card {
+
 }
