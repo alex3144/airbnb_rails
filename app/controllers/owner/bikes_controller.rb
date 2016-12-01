@@ -22,19 +22,18 @@ class Owner::BikesController < ApplicationController
   end
 
   def show
-
   end
 
   def available
-    bike = current_user.bikes.find(params[:id])
-    bike.available = true
-    bike.save
+    @bike = current_user.bikes.find(params[:id])
+    @bike.available = true
+    @bike.save
   end
 
   def not_available
-    bike = current_user.bikes.find(params[:id])
-    bike.available = false
-    bike.save
+    @bike = current_user.bikes.find(params[:id])
+    @bike.available = false
+    @bike.save
   end
 
   private

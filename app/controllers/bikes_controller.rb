@@ -3,8 +3,6 @@ class BikesController < ApplicationController
 
   def index
     @electric_search = false
-    @users = User.all
-
     if params[:city] != ""
       @city_search = params[:city].downcase.capitalize
       @bikes = Bike.where(city: @city_search).order(created_at: :desc)
@@ -23,8 +21,9 @@ class BikesController < ApplicationController
   end
 
   def show
-    @bike = Bike.find(params[:id])
     @user = current_user
+    @bike = Bike.find(params[:id])
+    @check = bookingcheck(@user)
   end
 
   private

@@ -4,6 +4,11 @@ class BookingsController < ApplicationController
     @bookings = current_user.bookings
   end
 
+  def show
+    @booking = Booking.find(params[:id])
+    @bike = @booking.bike
+  end
+
   def new
     @booking = Booking.new
     @bike = Bike.find(params[:bike_id])
@@ -20,6 +25,12 @@ class BookingsController < ApplicationController
     else
       render "new"
     end
+  end
+
+  def cancel
+    @booking = Booking.find(params[:id])
+    @booking.destroy
+    redirect_to bookings_path
   end
 
   private

@@ -16,30 +16,28 @@
 
   <div class="bikes-container">
     <div class="content_left bikes-list">
-
-
       <div class="row">
-      <% @bikes.each do |bike|%>
-        <div class="col-xs-12 col-md-6">
-          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://lorempicsum.com/futurama/450/200/1');">
-            <div class="card-city"><%= bike.city %></div>
-            <div class="card-description">
-            <h2 class="bike-title"><%= bike.title %></h2>
-            <p><%= bike.detail %></p>
+        <% @bikes.each do |bike|%>
+          <% if bike.available == true %>
+            <div class="col-xs-12 col-md-6">
+              <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://lorempicsum.com/futurama/450/200/1');">
+                <div class="card-city"><%= bike.city %></div>
+                <% if bike.user.photo %>
+                  <%= cl_image_tag bike.user.photo.path, width: 50, height: 50, crop: :fill, class: "img-circle" %>
+                <% end %>
+                <div class="card-description">
+                <h2 class="bike-title"><%= bike.title %></h2>
+                <p><%= bike.detail %></p>
+                </div>
+                <%= link_to "", bike_path(bike), class: "card-link"%>
+              </div>
             </div>
-            <% user = @users.find(bike.user_id) %>
-            <% if user.photo %>
-              <%= cl_image_tag user.photo.path %>
-            <% end %>
-            <%= link_to "", bike_path(bike), class: "card-link"%>
-          </div>
-        </div>
-      <% end %>
+          <%end%>
+        <% end %>
       </div>
     </div>
-    <div class="content-right bikes-map">
-
-    </div>
+  <div class="content-right bikes-map">
   </div>
+</div>
 
 

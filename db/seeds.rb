@@ -20,7 +20,7 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo nemo corpori
  booking.bike = bike
  booking.save!
 
-user1 = User.create!(first_name:"Bob", email:"test@free.fr", password:"hzbdizhdb", password_confirmation:"hzbdizhdb")
+user1 = User.create!(first_name:"Bob",  phone_number: "0650802076", email:"test@free.fr", password:"hzbdizhdb", password_confirmation:"hzbdizhdb")
 
 
 
