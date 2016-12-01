@@ -15,3 +15,9 @@ $("#location_good").click(function() {
   alert("Vous avez mis votre velo en location");
   }
 );
+
+
+$('.datepicker').datepicker({
+    format: 'dd/mm/yyyy',
+    startDate: '-3d'
+});
