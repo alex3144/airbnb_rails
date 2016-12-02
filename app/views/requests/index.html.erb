@@ -47,12 +47,12 @@
         <div class="choice">
           <% if booking.status == "waiting" %>
             <div class="product-controls-accept">
-              <%= link_to accept_request_path(booking), method: :patch, id: "accept" ,remote: true do %>
+              <%= link_to accept_request_path(booking), method: :patch, id: "accept" do %>
                 <i class="fa fa-check  fa-2x logo-check-request" aria-hidden="true"></i>
               <% end %>
             </div>
             <div class="product-controls-refuse">
-              <%= link_to refuse_request_path(booking), method: :patch , id: "refuse", remote: true do %>
+              <%= link_to refuse_request_path(booking), method: :patch , id: "refuse" do %>
                 <i class="fa fa-times fa-2x logo-times-request" aria-hidden="true"></i>
               <%end%>
             </div>
@@ -63,14 +63,8 @@
           <% elsif booking.status == "accepte" %>
             <i class="fa fa-check fa-2x logo-check-request" aria-hidden="true"></i>
           <%end%>
-          <div class= "accept hidden">
-            <i class="fa fa-check fa-2x" aria-hidden="true"></i>
-          </div>
-          <div class= "refuse hidden">
-            <i class="fa fa-times fa-2x" aria-hidden="true"></i>
-          </div>
         </div>
-    </div>>
+    </div>
   </div>
   <hr>
   <% end %>

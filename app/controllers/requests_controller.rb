@@ -10,22 +10,19 @@ class RequestsController < ApplicationController
     @booking = current_user.requests.find(params[:id])
     @booking.accept_status
     if @booking.save
-      respond_to do |format|
-        format.html { redirect_to bookings_path }
-        format.js
-      end
+      redirect_to requests_path
+    else
+      render "requests"
     end
   end
 
   def refuse
     @booking = current_user.requests.find(params[:id])
     @booking.refuse_status
-    @booking.save
-     if @booking.save
-      respond_to do |format|
-        format.html { redirect_to bookings_path }
-        format.js
-      end
+    if @booking.save
+      redirect_to requests_path
+    else
+      render "requests"
     end
   end
 end
