@@ -22,9 +22,22 @@
   margin-top: 30px;
 }
 .product-controls-accept a:hover {
-  color: green  !important
+  color: white !important
 }
 .product-controls-refuse a:hover {
-  color: #D3473C!important
+  color: white!important
 }
 
+.controls {
+  padding-left:20px;
+  display:flex;
+}
+
+.controls a {
+  font-weight: lighter;
+  color: white;
+}
+
+.controls-item {
+  padding:20px;
+}

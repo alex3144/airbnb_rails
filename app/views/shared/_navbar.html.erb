@@ -16,11 +16,11 @@
 
           <!-- Profile picture and dropdown -->
       <div class="navbar-wagon-item">
-        <div class="dropdown">
+        <div class="dropdown d">
           <% if current_user.photo? %>
-            <%= cl_image_tag current_user.photo.path , width: 30, height: 30 , class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+            <%= cl_image_tag current_user.photo.path , class: "avatar-large dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <% else %>
-           <%= image_tag "http://placehold.it/30x30" , class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+           <%= facebook_avatar%>
           <% end %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
           <li>
@@ -50,7 +50,7 @@
             </li>
             <li>
               <%= link_to destroy_user_session_path, method: :delete do %>
-                <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Déconexion") %>
+                <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Déconnexion") %>
               <% end %>
             </li>
           </ul>
