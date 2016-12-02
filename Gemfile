@@ -8,6 +8,12 @@ gem 'figaro'
 gem 'jbuilder', '~> 2.0'
 gem 'redis'
 gem 'devise'
+gem "gmaps4rails"
+gem "geocoder"
+
+source 'https://rails-assets.org' do
+  gem "rails-assets-underscore"
+end
 
 gem 'sass-rails'
 gem 'jquery-rails'

@@ -40,6 +40,25 @@
         </div>
       </div>
     <div class="content-right bikes-map">
+      <div id="map" style="width: 90%; height: 400px;"></div>
+
+      <% content_for(:after_js) do %>
+        <script type="text/javascript">
+          $(document).on('ready', function() {
+            var handler = Gmaps.build('Google');
+            handler.buildMap({ internal: { id: 'map' } }, function(){
+              markers = handler.addMarkers(<%= raw @hash.to_json %>);
+              handler.bounds.extendWith(markers);
+              handler.fitMapToBounds();
+              if (markers.length == 0) {
+                handler.getMap().setZoom(1);
+              } else if (markers.length == 1) {
+                handler.getMap().setZoom(1);
+              }
+            });
+          });
+        </script>
+      <% end %>
     </div>
   </div>
 </div>
