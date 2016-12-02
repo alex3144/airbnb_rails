@@ -22,10 +22,10 @@
   margin-top: 30px;
 }
 .product-controls-accept a:hover {
-  color: white !important
+  color: green !important
 }
 .product-controls-refuse a:hover {
-  color: white!important
+  color: red!important
 }
 
 .controls {
@@ -40,4 +40,9 @@
 
 .controls-item {
   padding:20px;
+}
+
+
+.choice i {
+  color:black;
 }
