@@ -21,12 +21,13 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo nemo corpori
  booking.save!
 
 user1 = User.create!(first_name:"Bob",  phone_number: "0650802076", email:"test@free.fr", password:"hzbdizhdb", password_confirmation:"hzbdizhdb")
-
+user2 = User.create!(first_name:"arianne5",  phone_number: "0650802056", email:"test2@freeee.fr", password:"hzbdizhdb", password_confirmation:"hzbdizhdb")
 
 
 bike1 = Bike.create!(city:"Nantes",kind: "VTC", brand:"Peugeot", title:"Vélo de collection", detail:"Lorem ipsum dolor sit amet, consectetur adipisicing elit.", user_id: user1.id)
-bike2 = Bike.create!(city:"Bordeaux",kind: "VTT" , brand:"Scott", title:"VTT 29\" semi rigide", detail:"Lorem ipsum dolor sit amet, consectetur adipisicing elit.", user_id: user1.id)
+bike2 = Bike.create!(city:"Bordeaux",kind: "VTT" , brand:"Scott", title:"VTT 29\" semi rigide", detail:"Lorem ipsum dolor sit amet, consectetur adipisicing elit.", user_id: user2.id)
 bike3 = Bike.create!(city:"Amsterdam",kind: "VTT" , brand:"Specialized", title:"VTT 29\" tout supendu", detail:"Lorem ipsum dolor sit amet, consectetur adipisicing elit.", user_id: user1.id)
 bike4 = Bike.create!(city:"Cherbourg",kind: "VTT" , brand:"Commencal",electric: true, title:"VTT 29\" semi rigide", detail:"Lorem ipsum dolor sit amet, consectetur adipisicing elit.", user_id: user1.id)
-bike5 = Bike.create!(city:"Paris",kind: "VTT" , brand:"Canyon", title:"VTT 28\" semi rigide", detail:"Lorem ipsum dolor sit amet, consectetur adipisicing elit.", user_id: user1.id)
+bike5 = Bike.create!(city:"Paris",kind: "VTT" , brand:"Canyon", title:"VTT 28\" semi rigide", detail:"Lorem ipsum dolor sit amet, consectetur adipisicing elit.", user_id: user2.id)
 bike6 = Bike.create!(city:"Nantes",kind: "VTT" , brand:"Peugeot",electric: true, title:"VTT 29\" semi rigide", detail:"Lorem ipsum dolor sit amet, consectetur adipisicing elit.", user_id: user1.id)
+

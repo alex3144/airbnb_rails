@@ -18,7 +18,14 @@ class BikesController < ApplicationController
       @kind_search = params[:kind]
       @bikes = @bikes.where(kind: @kind_search).order(created_at: :desc)
     end
+    @bikes = @bikes.where.not(latitude: nil, longitude: nil)
+    @hash = Gmaps4rails.build_markers(@bikes) do |bike, marker|
+      marker.lat bike.latitude
+      marker.lng bike.longitude
+      # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
+    end
   end
+
 
   def show
     @user = current_user
@@ -27,6 +34,16 @@ class BikesController < ApplicationController
   end
 
   private
+
+  def bookingcheck(user)
+    if user_signed_in?
+      if user.bookings.where(bike_id: @bike.id).empty?
+        return true
+      else
+        return false
+      end
+    end
+  end
 
   def bike_params
     params.require(:product).permit(:name, :description, photos: [])

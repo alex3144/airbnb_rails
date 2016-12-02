@@ -1,77 +1,43 @@
-.product {
-  display: flex;
-  align-items: center;
-  padding: 20px;
-  border-radius: 3px;
-  transition: all 0.15s ease;
-  margin-top: 20px;
-  border-radius:5px;
-}
-
-/* Body design */
-.product-body {
-  flex: 1 0 auto;
-}
-
-.product-body p {
-  font-weight: lighter;
-  color: grey;
-  margin-bottom: 0;
-}
-
-/* Product image */
-.product-image {
-  border-radius: 10px;
-  margin-right: 20px;
-  flex: 0 0 10%;
-}
 
 /* Controls design */
 .product-controls {
   font-weight: lighter;
   color: grey;
+  margin: 0px;
   display:flex;
   align-items: center;
-  text-align: center;
-  margin: 0px;
+  padding: 30px;
 }
 
 .product-controls a {
-  padding: 0 20px;
   font-size: 17px;
   color: black;
+  padding:50px;
 }
 
-
+.booking-container {
+  display:flex;
+  justify-content:space-between;
+  align-items: center;
+  margin-top: 30px;
+}
 .product-controls-accept a:hover {
-  color: #D3473C !important
+  color: white !important
 }
 .product-controls-refuse a:hover {
-  color: green !important
-}
-.product-controls-hidden a {
-  color: transparent;
-  transition: all 0.15s ease;
-  border-color: transparent;
+  color: white!important
 }
 
-/* Hover effects */
-.product:hover {
-  background: #f7f7fa;
-  cursor: pointer;
+.controls {
+  padding-left:20px;
+  display:flex;
 }
-.product-upvote:hover, .product-upvote.product-upvote-upvoted {
-  color: #5898f1;
-  cursor: pointer;
-}
-.product-upvote-upvoted .product-arrow {
-  border-bottom-color: #5898f1;
-}
-// .product:hover .product-upvote { transform: scale(1.2) }
-.product:hover .product-controls-hidden a { color: #E6E6E6 }
-.product-upvote:hover .product-arrow { border-bottom: 9px solid #5898f1 }
 
+.controls a {
+  font-weight: lighter;
+  color: white;
+}
 
-.link-inactif:hover {
-  text-decoration: none;
+.controls-item {
+  padding:20px;
 }
