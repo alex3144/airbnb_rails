@@ -5,11 +5,13 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:facebook]
   #as renter
-  has_many :rented_bikes, through: :bookings, source: :bike
   has_many :bookings
+  has_many :rented_bikes, through: :bookings, source: :bike
+
   #as owner
-  has_many :requests , through: :bikes , source: :bookings
   has_many :bikes
+  has_many :requests, through: :bikes, source: :bookings
+
   has_attachment :photo, maximum:1
 
   def self.find_for_facebook_oauth(auth)

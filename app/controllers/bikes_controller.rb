@@ -18,7 +18,14 @@ class BikesController < ApplicationController
       @kind_search = params[:kind]
       @bikes = @bikes.where(kind: @kind_search).order(created_at: :desc)
     end
+    @bikes = @bikes.where.not(latitude: nil, longitude: nil)
+    @hash = Gmaps4rails.build_markers(@bikes) do |bike, marker|
+      marker.lat bike.latitude
+      marker.lng bike.longitude
+      # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
+    end
   end
+
 
   def show
     @user = current_user
