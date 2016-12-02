@@ -14,6 +14,8 @@ gem "geocoder"
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"
 end
+gem 'omniauth-facebook'
+
 
 gem 'sass-rails'
 gem 'jquery-rails'
