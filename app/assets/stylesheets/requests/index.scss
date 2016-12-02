@@ -140,3 +140,21 @@
   left: 55px;
   top: 112px;
 }
+
+.card-img-booking{
+  flex: 0 0 40%;
+  border-radius: 4px;
+  box-shadow: 1px 1px 2px #e7e7e7;
+  font-weight: normal;
+  font-size: 16px;
+  position: relative;
+  height: 245px;
+  background-size: cover;
+}
+
+.booking-content-right{
+  flex: 0 0 50%;
+  position: relative;
+  height: 245px;
+  padding-top: 70px;
+}

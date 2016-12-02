@@ -1,34 +1,31 @@
-<div class="container">
-  <div class= "row">
-    <div class= "col-md-6 col-md-offset-3">
-      <h1> Mes demandes </h1>
-    </div>
-  </div>
+<div class="container text-center">
+  <h1> Mes demandes </h1>
+  <hr>
   <% @bookings.each do |booking| %>
-  <%= link_to booking_path(booking) do %>
-    <div class="row">
-      <div class="booking-container">
+  <div class="flex-container">
+    <!-- div correspondant au profil-->
+      <%= link_to booking_path(booking) do %>
       <!-- div correspondant au attribut du bike qui est demandé a la location-->
-        <div class="bike-photo flex-item ">
-            <% if booking.bike.photos? %>
-              <div class="card2" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path booking.bike.photos.first.path %>);">
-            <% else %>
-               <div class="card2" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url("");">
-            <% end %>
-             <div class="card-city"><%= booking.bike.city %></div>
-             <div class="card-description">
-             <h2 class="bike-title text-center"><%= booking.bike.title %></h2>
-             </div>
-             </div>
-          </div>
+       <div class="card-img-booking flex-item" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path booking.bike.photos.first.path %>);">
+      <div class="request-title-green">
+        <h3>Annonce concernée</h3>
+      </div>
+        <div class="card-city-request"><%= booking.bike.city %></div>
+        <div class="card-title-request">
+          <h2 class="bike-title text-center"><%= booking.bike.title %></h2>
+        </div>
+        <%= link_to "", bike_path(booking.bike), class: "card-link"%>
+    </div>
+
       <!-- div correspondant au bouton accepter/refuser la demande de location -->
-      <div class="right flex-item">
+      <div class="booking-content-right flex-item">
+        <h3>Status :</h3>
         <% if booking.status == "waiting" %>
-          <i class="fa fa-spinner" aria-hidden="true"> Votre demande est en attente </i>
+          <i class="fa fa-spinner" aria-hidden="true"> Votre demande est en attente. </i>
         <% elsif booking.status == "accepte" %>
-          <i class="fa fa-spinner" aria-hidden="true"> Votre demande est acceptée </i>
+          <i class="fa fa-spinner" aria-hidden="true"> Votre demande est acceptée. </i>
          <% elsif booking.status == "refuse" %>
-          <i class="fa fa-spinner" aria-hidden="true"> Votre demande est refusée </i>
+          <i class="fa fa-spinner" aria-hidden="true"> Votre demande est refusée. </i>
         <% end %>
       </div>
     </div>
