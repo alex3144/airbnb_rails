@@ -3,16 +3,14 @@
     <h1>Air Bikes n Bikes</h1>
     <p> Louez un vélo simplement </p>
     <div class="search">
-      <%= form_tag(bikes_path, method: :get) do %>
-        <%= label_tag(:city, "Villes:") %>
-        <%= text_field_tag(:city,) %>
-        <%= label_tag(:kind, "Type:") %>
-        <%= select_tag(:kind, options_for_select(["VTT", "VTC", "Hollandais","Course", "Cyclocross","Triporteur" , "Tandem"]),include_blank: true) %>
-        <%= label_tag(:electric, "Velo electrique") %>
+      <%= form_tag(bikes_path, method: :get, :class => 'form-inline') do %>
+        <%= label_tag(:city, "Villes:", class: 'label-bike-tag') %>
+        <%= text_field_tag(:city,nil, class: 'form-control bike-city-form') %>
+        <%= label_tag(:kind, "Type:", class: 'label-bike-tag') %>
+        <%= select_tag(:kind, options_for_select(["VTT", "VTC", "Hollandais","Course", "Cyclocross","Triporteur" , "Tandem"]),include_blank: true, class: "form-control bike-kind-form") %>
+        <%= label_tag(:electric, "Velo electrique", class: 'label-bike-tag') %>
         <%= check_box_tag(:electric) %>
-      <div>
-        <%= submit_tag("Chercher", class: "btn btn-danger btn_main_cta ") %>
-      </div>
+        <%= submit_tag("Chercher", class: "btn btn-large btn-danger btn-bike-form") %>
       <% end %>
     </div>
   </div>
@@ -22,18 +20,27 @@
   <div class="container">
     <div><h1 >Nos dernières offres</h1></div>
     <div class="row cardrow">
-    <% @bikes.each do |bike|%>
-      <div class="col-xs-12 col-sm-4">
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://lorempicsum.com/futurama/450/200/1');">
-          <div class="card-city"><%= bike.city %></div>
-          <div class="card-description">
-            <h2 class="bike-title"><%= bike.title %></h2>
-          </div>
-          <img class="card-user avatar" src="user.jpg">
-          <%= link_to "", bike_path(bike), class: "card-link"%>
-        </div>
+      <% @bikes.each do |bike|%>
+        <% if bike.available == true %>
+          <div class="col-xs-12 col-md-4">
+            <% if bike.photos? %>
+                <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path bike.photos.first.path %>);">
+              <% else %>
+                <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url("");">
+              <% end %>
+              <div class="card-city"><%= bike.city %></div>
+              <% if bike.user.photo %>
+                <%= cl_image_tag bike.user.photo.path, crop: :fill, class: "card-avatar" %>
+              <% end %>
+              <div class="card-description">
+              <h2 class="bike-title text-center"><%= bike.title %></h2>
+              </div>
+              <%= link_to "", bike_path(bike), class: "card-link"%>
+              </div>
+            </div>
+          <%end%>
+        <% end %>
       </div>
-    <% end %>
     </div>
   </div>
 </div>

@@ -1,33 +1,39 @@
 <div class="container">
-  <div class="wrapper_for_form">
+  <div class="wrapper_for_user_form col-xs-10 col-xs-offset-1">
 
-    <h1>Bonjour, nous allons vous aider à décrire votre vélo</h1>
+    <h1>Votre offre</h1>
+
+    <div class="form_content ">
+      <%= simple_form_for ([:owner, @bike]) do |f| %>
+        <div class="form-goup">
+          <%= f.input :city, label: "Dans quelle ville peut on louer votre vélo? ", label_html: { class: 'label-bike-tag' } %>
+
+          <%= f.input :title, label:"Titre de votre offre",  require: true, autofocus: true, label_html: { class: 'label-bike-tag'} %>
+          <%= f.input :detail, label: "Description",require: true, autofocus: true, label_html: { class: 'label-bike-tag' } %>
+          <%= f.input :brand, label: "Marque", autofocus: true, label_html: { class: 'label-bike-tag' } %>
+
+          <div class="form-inline">
+            <%= f.input :kind, label: "Type", collection: ['VTT', 'VTC', 'Hollandais', 'Course', 'Cyclocross', 'Triporteur', 'Tandem'],prompt: "Selectionnez votre style", require: true, autofocus: true, label_html: { class: 'label-bike-tag' }%>
+            <%= f.input :electric,label: "velo electrique", as: :boolean, label: false, inline_label: true, label_html: { class: 'label-bike-tag' }%>
+             <%= f.input :autonomy,label: "Autonomie", autofocus: true, label_html: { class: 'label-bike-tag' }%>
+          </div>
 
 
-    <div class="bike_form">
-      <%= simple_form_for([:owner,@bike]) do |f| %>
-        <p> Where is located your bike? </p>
-        <%= f.input :city%>
 
-        <p> Describe it </p>
-        <%= f.input :title, require: true, autofocus: true%>
-        <%= f.input :detail, label: "Decription",require: true, autofocus: true %>
-        <%= f.input :brand, autofocus: true %>
-        <%= f.input :kind, collection: ["Mountain Bike", "Race Bike", "City Style", "Tandem"],prompt: "Select your style", require: true, autofocus: true %>
+          <div class="post-form-inline">
+          <%= f.input :price, label: "Quel est votre prix journalier pour prêter votre vélo ?", require: true, autofocus: true, label_html: { class: 'label-bike-tag' } %>
+          </div>
 
-        <%= f.input :electric, as: :boolean, label: false, inline_label: true %>
-        <%= f.input :autonomy,autofocus: true %>
-        <p> What is your price per day to ride it ? </p>
+          <%= f.input :photos, label: "Ajoutez vos photos", as: :attachinary, require: true, label_html: { class: 'label-bike-tag' } %>
+          <div class="row">
+            <div class="col-md-4 col-md-offset-5">
+              <%= f.button :submit, "Rent my bike", class: "btn btn-large btn-danger btn_main_cta" %>
+            </div>
+          </div>
 
-        <%= f.input :price,require: true, autofocus: true  %>
-
-        <p> Add Pictures</p>
-        <%= f.input :photos, as: :attachinary %>
-        <%= f.button :submit, "Rent my bike" %>
+        </div>
       <% end %>
     </div>
-
-
   </div>
 </div>
 
