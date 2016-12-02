@@ -3,16 +3,14 @@
     <h1>Air Bikes n Bikes</h1>
     <p> Louez un vélo simplement </p>
     <div class="search">
-      <%= form_tag(bikes_path, method: :get) do %>
-        <%= label_tag(:city, "Villes:") %>
-        <%= text_field_tag(:city,) %>
-        <%= label_tag(:kind, "Type:") %>
-        <%= select_tag(:kind, options_for_select(["VTT", "VTC", "Hollandais","Course", "Cyclocross","Triporteur" , "Tandem"]),include_blank: true) %>
-        <%= label_tag(:electric, "Velo electrique") %>
+      <%= form_tag(bikes_path, method: :get, :class => 'form-inline') do %>
+        <%= label_tag(:city, "Villes:", class: 'label-bike-tag') %>
+        <%= text_field_tag(:city,nil, class: 'form-control bike-city-form') %>
+        <%= label_tag(:kind, "Type:", class: 'label-bike-tag') %>
+        <%= select_tag(:kind, options_for_select(["VTT", "VTC", "Hollandais","Course", "Cyclocross","Triporteur" , "Tandem"]),include_blank: true, class: "form-control bike-kind-form") %>
+        <%= label_tag(:electric, "Velo electrique", class: 'label-bike-tag') %>
         <%= check_box_tag(:electric) %>
-      <div>
-        <%= submit_tag("Chercher", class: "btn btn-danger btn_main_cta ") %>
-      </div>
+        <%= submit_tag("Chercher", class: "btn btn-large btn-danger btn-bike-form") %>
       <% end %>
     </div>
   </div>
