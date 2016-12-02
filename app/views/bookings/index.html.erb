@@ -21,11 +21,11 @@
       <div class="booking-content-right flex-item">
         <h3>Status :</h3>
         <% if booking.status == "waiting" %>
-          <i class="fa fa-spinner" aria-hidden="true"> Votre demande est en attente </i>
+          <i class="fa fa-spinner" aria-hidden="true"> Votre demande est en attente. </i>
         <% elsif booking.status == "accepte" %>
-          <i class="fa fa-spinner" aria-hidden="true"> Votre demande est acceptée </i>
+          <i class="fa fa-spinner" aria-hidden="true"> Votre demande est acceptée. </i>
          <% elsif booking.status == "refuse" %>
-          <i class="fa fa-spinner" aria-hidden="true"> Votre demande est refusée </i>
+          <i class="fa fa-spinner" aria-hidden="true"> Votre demande est refusée. </i>
         <% end %>
       </div>
     </div>
