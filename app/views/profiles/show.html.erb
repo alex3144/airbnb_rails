@@ -2,8 +2,10 @@
   <div class="row">
     <h2 class="text-center"> <strong><%= @user.first_name %></strong> <strong><%= @user.last_name %></strong> <%= link_to "edit your profile", edit_profile_path, class: "btn btn-info"%> </h2>
     <div class="col-md-6 col-md-offset-5 padded">
-    <% if @user.photo? %>
-      <%= cl_image_tag @user.photo.path, width: 200, height: 200, crop: :fill, class: "img-circle" %>
+    <% if current_user.photo? %>
+      <%= cl_image_tag current_user.photo.path , width: 150, height: 150 , class: "avatar-monster" %>
+    <% else %>
+     <%= facebook_avatar_big %>
     <% end %>
     </div>
   </div>
