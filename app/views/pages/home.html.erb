@@ -20,18 +20,27 @@
   <div class="container">
     <div><h1 >Nos dernières offres</h1></div>
     <div class="row cardrow">
-    <% @bikes.each do |bike|%>
-      <div class="col-xs-12 col-sm-4">
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://lorempicsum.com/futurama/450/200/1');">
-          <div class="card-city"><%= bike.city %></div>
-          <div class="card-description">
-            <h2 class="bike-title"><%= bike.title %></h2>
-          </div>
-          <img class="card-user avatar" src="user.jpg">
-          <%= link_to "", bike_path(bike), class: "card-link"%>
-        </div>
+      <% @bikes.each do |bike|%>
+        <% if bike.available == true %>
+          <div class="col-xs-12 col-md-4">
+            <% if bike.photos? %>
+                <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path bike.photos.first.path %>);">
+              <% else %>
+                <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url("");">
+              <% end %>
+              <div class="card-city"><%= bike.city %></div>
+              <% if bike.user.photo %>
+                <%= cl_image_tag bike.user.photo.path, crop: :fill, class: "card-avatar" %>
+              <% end %>
+              <div class="card-description">
+              <h2 class="bike-title text-center"><%= bike.title %></h2>
+              </div>
+              <%= link_to "", bike_path(bike), class: "card-link"%>
+              </div>
+            </div>
+          <%end%>
+        <% end %>
       </div>
-    <% end %>
     </div>
   </div>
 </div>
