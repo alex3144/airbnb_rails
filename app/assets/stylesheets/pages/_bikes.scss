@@ -102,8 +102,9 @@
 
 .show-bike-detail {
   font-family: 'Maitree';
+  color: $light-grey;
   font-weight: normal;
-  font-size: 16px;
+  font-size: 15px;
   padding-bottom: 30px;
   background: white;
   padding: 30px;
@@ -116,6 +117,7 @@
   font-family: 'Open Sans';
   font-weight: normal;
   font-size: 23px;
+  color: $dark-grey;
 }
 
 
@@ -123,14 +125,14 @@
   background-color: $pink;
   border-color: $pink;
   padding: 5px 25px 5px 25px;
-  margin-top: 25px;
+  margin: 25px 0 50px 0;
 }
 
 .btn-bike-show-green{
   background-color: $green;
   border-color: $green;
   padding: 5px 25px 5px 25px;
-  margin-top: 25px;
+  margin: 25px 0 50px 0;
 }
 
 .show-bike-text p{
